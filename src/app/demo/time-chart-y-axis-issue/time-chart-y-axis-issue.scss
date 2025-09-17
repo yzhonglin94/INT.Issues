@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .time-plot-wrap {
+    height: 100%;
+    width: 100%;
+  }
+
+  canvas {
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { TimeChartYAxisIssue } from './demo/time-chart-y-axis-issue/time-chart-y-axis-issue';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [TimeChartYAxisIssue],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
