@@ -1,1 +1,9 @@
-<app-time-chart-y-axis-issue></app-time-chart-y-axis-issue>
+<select name="issues" [(ngModel)]="issueType">
+  <option *ngFor="let option of options" [value]="option.key">{{ option.name }}</option>
+</select>
+<ng-container *ngIf="issueType===IssueType.YAxis">
+  <app-time-chart-y-axis-issue></app-time-chart-y-axis-issue>
+</ng-container>
+<ng-container *ngIf="issueType===IssueType.Tooltip">
+  <app-time-chart-tooltip-issue></app-time-chart-tooltip-issue>
+</ng-container>

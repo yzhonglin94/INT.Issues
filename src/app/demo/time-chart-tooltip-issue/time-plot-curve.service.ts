@@ -32,26 +32,24 @@ export class TimePlotCurveService {
   }
 
   private onDataUpdate(): void {
-    setTimeout(() => {
-      const data = mockData;
-      Object.keys(data).forEach(key => {
-        const obj = this.widget.getTimeSeriesObjectById(key);
-        if (!obj) {
-          return;
-        }
-        const tableView = obj.getData() as DataTableView;
-        const dataTable = tableView.getDataTable() as DataTable;
-        this.widget.suspendUpdate();
-        const d = data[key];
-        if (d.length === dataTable.getNumberOfRows() + 1) {
-          dataTable.addRows(d[0]);
-        } else {
-          dataTable.removeRows(0, dataTable.getNumberOfRows());
-          dataTable.addRows(data[key]);
-        }
-        this.widget.resumeUpdate();
-      });
-    }, 1000);
+    const data = mockData;
+    Object.keys(data).forEach(key => {
+      const obj = this.widget.getTimeSeriesObjectById(key);
+      if (!obj) {
+        return;
+      }
+      const tableView = obj.getData() as DataTableView;
+      const dataTable = tableView.getDataTable() as DataTable;
+      this.widget.suspendUpdate();
+      const d = data[key];
+      if (d.length === dataTable.getNumberOfRows() + 1) {
+        dataTable.addRows(d[0]);
+      } else {
+        dataTable.removeRows(0, dataTable.getNumberOfRows());
+        dataTable.addRows(data[key]);
+      }
+      this.widget.resumeUpdate();
+    });
   }
 
   private createCurveOptions(channelList: string[]): TimeSeriesWidget.CurveOptions[] {
