@@ -25,7 +25,7 @@ export class TimeChartTooltipIssue implements AfterViewInit {
     this.initPlot();
     const channels = [
       "WT_WH_Wht",
-      "WT_Well_Head_DigiSWANs_DigiSWAN_Pressure_BatteryVoltage1"
+      "WT_WH_WhP"
     ];
     this.timePlotCurveService.init(this.widget);
     this.timePlotCurveService.setChannels(channels);
