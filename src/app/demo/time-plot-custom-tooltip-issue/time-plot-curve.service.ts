@@ -16,6 +16,10 @@ export class TimePlotCurveService {
     this.channelList = channelList;
     this.initCurves();
     this.onDataUpdate();
+    setInterval(() => {
+      this.onDataUpdate();
+      console.log('data update called');
+    }, 3000);
   }
 
   private initCurves(): void {

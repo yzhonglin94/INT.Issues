@@ -31,7 +31,13 @@ export class TimePlotCustomTooltipIssue implements AfterViewInit {
       "WT_WH_WhP3",
       "WT_WH_WhP4",
       "WT_WH_WhP5",
-      "WT_WH_WhP6"
+      "WT_WH_WhP6",
+      "WT_WH_WhP7",
+      "WT_WH_WhP8",
+      "WT_WH_WhP9",
+      "WT_WH_WhP10",
+      "WT_WH_WhP11",
+      "WT_WH_WhP12"
     ];
     this.tooltipService.setChannels(channels);
     this.timePlotCurveService.init(this.widget);
