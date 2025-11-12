@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Plot } from '@int/geotoolkit/plot/Plot';
 import { TimeSeriesWidget } from '@int/geotoolkit/widgets/TimeSeriesWidget';
-import { createScene } from '../time-chart-y-axis-issue/create-scene';
 import { TimePlotCurveService } from './time-plot-curve.service';
+import { TimePlotTooltipService } from './tooltip/time-plot-tooltip.service';
+import { createScene } from './create-scene';
 
 @Component({
   selector: 'app-time-plot-custom-tooltip-issue',
@@ -10,15 +11,16 @@ import { TimePlotCurveService } from './time-plot-curve.service';
   templateUrl: './time-plot-custom-tooltip-issue.html',
   standalone: true,
   styleUrl: './time-plot-custom-tooltip-issue.scss',
-  providers: [TimePlotCurveService]
+  providers: [TimePlotCurveService, TimePlotTooltipService]
 })
 export class TimePlotCustomTooltipIssue implements AfterViewInit {
   @ViewChild('timePlot') timePlot: ElementRef<HTMLCanvasElement>;
   @ViewChild('timePlotWrap') timePlotWrapRef: ElementRef<HTMLDivElement>;
   private plot: Plot;
   private widget: TimeSeriesWidget;
+  @ViewChild('tooltip') tooltipRef: ElementRef<HTMLDivElement>;
 
-  constructor(private timePlotCurveService: TimePlotCurveService) {
+  constructor(private timePlotCurveService: TimePlotCurveService, private tooltipService: TimePlotTooltipService) {
   }
 
   ngAfterViewInit(): void {
@@ -31,6 +33,7 @@ export class TimePlotCustomTooltipIssue implements AfterViewInit {
       "WT_WH_WhP5",
       "WT_WH_WhP6"
     ];
+    this.tooltipService.setChannels(channels);
     this.timePlotCurveService.init(this.widget);
     this.timePlotCurveService.setChannels(channels);
   }
@@ -44,5 +47,6 @@ export class TimePlotCustomTooltipIssue implements AfterViewInit {
     );
     this.plot = plot;
     this.widget = plot.getRoot() as TimeSeriesWidget;
+    this.tooltipService.init(this.widget, this.tooltipRef.nativeElement);
   }
 }

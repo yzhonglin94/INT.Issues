@@ -34,8 +34,8 @@ export class TimePlotCurveService {
     const data = {};
     this.channelList.forEach((mnemonic, index) => {
       const channelData = [];
-      for (let i = 1758182552716; i < 1758182925773; i += 1000) {
-        channelData.push([i, Math.random() + index]);
+      for (let i = 1758182552716; i < 1758189319180; i += 1000) {
+        channelData.push([i, Math.random() + 1]);
       }
       data[mnemonic] = channelData;
     });
